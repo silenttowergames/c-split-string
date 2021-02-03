@@ -6,7 +6,7 @@ int main()
     const char* phrase = "The quick brown fox jumps over the lazy dog";
     
     int wordCount = 0;
-    char** words = split(phrase, ' ', &wordCount);
+    char** words = split(phrase, 19, ' ', &wordCount);
     
     printf("Phrase: \"%s\"\n", phrase);
     printf("Word Count: %d\n", wordCount);
@@ -16,7 +16,7 @@ int main()
         printf("'%s'\n", words[i]);
     }
     
-    freeSplit(words, wordCount);
+    split_free(words, wordCount);
     
     return 0;
 }

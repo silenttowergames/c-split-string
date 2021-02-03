@@ -3,20 +3,15 @@
 #include <stdio.h>
 #include "words.h"
 
-char** split(const char* phrase, char delimiter, int* wordCount)
+char** split(const char* phrase, int phraseLength, char delimiter, int* wordCount)
 {
     // Get number of words
     
     char** words;
     int c = 1;
     
-    for(int i = 0; i < strlen(phrase); i++)
+    for(int i = 0; i < phraseLength; i++)
     {
-        if(phrase[i] == '\0')
-        {
-            break;
-        }
-        
         if(phrase[i] == delimiter)
         {
             c++;
@@ -29,7 +24,7 @@ char** split(const char* phrase, char delimiter, int* wordCount)
     
     int cc = 0;
     int oldWordStart = -1;
-    for(int i = 0; i < strlen(phrase) + 1; i++)
+    for(int i = 0; i < phraseLength + 1; i++)
     {
         if(oldWordStart == -1)
         {
@@ -60,7 +55,12 @@ char** split(const char* phrase, char delimiter, int* wordCount)
     return words;
 }
 
-void freeSplit(char** words, int wordCount)
+char** split_str(const char* phrase, char delimiter, int* wordCount)
+{
+    return split(phrase, strlen(phrase), delimiter, wordCount);
+}
+
+void split_free(char** words, int wordCount)
 {
     for(int i = 0; i < wordCount; i++)
     {
