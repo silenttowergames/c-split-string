@@ -25,7 +25,7 @@ char** split(const char* phrase, int phraseLength, char delimiter, int* wordCoun
     {
         if(phrase[i] == delimiter)
         {
-            if(!lastCharWasDelimiter)
+            if(!lastCharWasDelimiter && i > 0)
             {
                 c++;
             }

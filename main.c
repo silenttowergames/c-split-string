@@ -4,7 +4,7 @@
 
 int main()
 {
-    const char* phrase = "Hello,  world! This is a call      to all my";
+    const char* phrase = "                ";
     
     int wordCount = 0;
     char** words = split(phrase, strlen(phrase), ' ', &wordCount);
