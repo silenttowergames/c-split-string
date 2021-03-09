@@ -2,10 +2,8 @@
 #include <string.h>
 #include "split.h"
 
-int main()
+int test(const char* phrase)
 {
-    const char* phrase = "                ";
-    
     int wordCount = 0;
     char** words = split(phrase, strlen(phrase), ' ', &wordCount);
     
@@ -18,6 +16,12 @@ int main()
     }
     
     split_free(words, wordCount);
+}
+
+int main()
+{
+    test("reload-map                    ");
+    test("one twoo three");
     
     return 0;
 }

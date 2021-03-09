@@ -19,7 +19,7 @@ char** split(const char* phrase, int phraseLength, char delimiter, int* wordCoun
     // Get number of words
     
     char** words;
-    int c = 1;
+    int c = 0;
     int lastCharWasDelimiter = 0;
     for(int i = 0; i < phraseLength; i++)
     {
@@ -38,6 +38,11 @@ char** split(const char* phrase, int phraseLength, char delimiter, int* wordCoun
         }
     }
     
+    if(!lastCharWasDelimiter)
+    {
+        c++;
+    }
+    
     // Get list of words
     
     words = malloc(sizeof(char*) * c);
@@ -54,22 +59,26 @@ char** split(const char* phrase, int phraseLength, char delimiter, int* wordCoun
         
         if(phrase[i] == '\0' || phrase[i] == delimiter)
         {
-            words[cc] = malloc(sizeof(char) * ((i - oldWordStart) + 1));
-            
-            memcpy(words[cc], &phrase[oldWordStart], (i - oldWordStart));
-            
-            words[cc][i + 1] = '\0';
-            
-            if(phrase[i] == '\0')
-            {
-                break;
-            }
-            
-            oldWordStart = -1;
-            
             if(!lastCharWasDelimiter)
             {
+                words[cc] = malloc(sizeof(char) * ((i - oldWordStart) + 1));
+                
+                memcpy(words[cc], &phrase[oldWordStart], (i - oldWordStart));
+                
+                words[cc][i + 1] = '\0';
+                
+                if(phrase[i] == '\0')
+                {
+                    break;
+                }
+                
+                oldWordStart = -1;
+                
                 cc++;
+            }
+            else
+            {
+                oldWordStart = -1;
             }
             
             lastCharWasDelimiter = 1;
