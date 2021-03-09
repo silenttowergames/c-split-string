@@ -1,12 +1,13 @@
 #include <stdio.h>
-#include "words.h"
+#include <string.h>
+#include "split.h"
 
 int main()
 {
-    const char* phrase = "The quick brown fox jumps over the lazy dog";
+    const char* phrase = "Hello,  world! This is a call      to all my";
     
     int wordCount = 0;
-    char** words = split(phrase, 19, ' ', &wordCount);
+    char** words = split(phrase, strlen(phrase), ' ', &wordCount);
     
     printf("Phrase: \"%s\"\n", phrase);
     printf("Word Count: %d\n", wordCount);
