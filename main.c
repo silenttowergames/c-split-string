@@ -11,6 +11,12 @@ int test(const char* phrase)
     printf("Phrase: \"%s\"\n", phrase);
     printf("Word Count: %d\n", wordCount);
     
+    for(int i = 0; i < wordCount; i++)
+    {
+        int len = strlen(words[i]);
+        printf("'%s':'%c':%d\n", words[i], words[i][len], words[i][len]);
+    }
+    
     split_free(words, wordCount);
 }
 

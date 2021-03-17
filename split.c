@@ -61,11 +61,11 @@ char** split(const char* phrase, int phraseLength, char delimiter, int* wordCoun
         {
             if(!lastCharWasDelimiter)
             {
-                words[cc] = malloc(sizeof(char) * ((i - oldWordStart) + 2));
+                words[cc] = malloc(sizeof(char) * ((i - oldWordStart) + 1));
                 
                 memcpy(words[cc], &phrase[oldWordStart], (i - oldWordStart));
                 
-                words[cc][i - oldWordStart + 1] = '\0';
+                words[cc][i - oldWordStart] = '\0';
                 
                 if(phrase[i] == '\0')
                 {
